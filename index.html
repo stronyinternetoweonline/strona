@@ -54,17 +54,20 @@
 
     // Logowanie
     function login() {
-      const user = document.getElementById("username").value;
-      const pass = document.getElementById("password").value;
-      if (user === "pablo" && pass === "kundel") {
-        window.location.href = "downloads.html";
-      } else {
-        document.getElementById("error").innerText = "❌ Błędny login lub hasło!";
-      }
-    }
+  const user = document.getElementById("username").value;
+  const pass = document.getElementById("password").value;
+  const hash = btoa(pass); // proste szyfrowanie (nie do końca bezpieczne)
+
+  if (user === "pablo" && hash === "a3VuZGVs") { // "kundel" w base64
+    window.location.href = "downloads.html";
+  } else {
+    document.getElementById("error").innerText = "❌ Błędny login lub hasło!";
+  }
+}
   </script>
 </body>
 </html>
+
 
 
 
