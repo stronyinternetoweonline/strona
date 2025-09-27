@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style3.css" />
+  <title>Szymon to goat</title>
+  <link rel="icon"type="image/x-icon" href="pablo.ico">
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Panel u góry -->
+    <div class="container">
+      <h1>Pliki do pobrania</h1>
+      <ul id="download-panel">
+        <li id="szymon">Władek robi nocki z Szymonem Żarnowskim</li>
+        <li><a href="naukapai.zip" download>📁 Nauka PAI</a></li>
+      </ul>
+      <a href="index.html" id="pliki">← Powrót do logowania</a>
+    </div>
+
+    <!-- Dolna część: dwie kolumny -->
+    <div class="columns-wrapper">
+      <div class="column" id="left-column"></div>
+      <div class="column" id="right-column"></div>
+    </div>
+  </div>
+
+  <script>
+    // Lista zdjęć od a do t
+    const letters = 'abcdefghijklmnopqrst'.split('');
+    const leftColumn = document.getElementById('left-column');
+    const rightColumn = document.getElementById('right-column');
+
+    letters.forEach((letter, index) => {
+      const img = document.createElement('img');
+      img.src = `${letter}.jpg`; // upewnij się, że pliki są w tym samym folderze co HTML
+      img.alt = letter;
+      img.classList.add('frame-img');
+
+      if (index < 10) leftColumn.appendChild(img);
+      else rightColumn.appendChild(img);
+    });
+  </script>
+</body>
+</html>
