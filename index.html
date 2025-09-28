@@ -240,16 +240,16 @@
     const pass = document.getElementById("password").value;
     const errorEl = document.getElementById("error");
 
-    // Baza kont: login -> { hash (base64), redirect }
+    
     const accounts = {
-      "pablo":  { hash: "a3VuZGVs", redirect: "ja.html" },        // "kundel"
-      "Filip":  { hash: "Tm93YWtvd3NraQ==", redirect: "koledzy.html" }, // "Nowakowski"
-      "Miłosz": { hash: "SmFnaWVsbG8=", redirect: "koledzy.html" },    // "Jagiello"
-      "Milosz": { hash: "SmFnaWVsbG8=", redirect: "koledzy.html" },    // "Jagiello" (bez ogonka)
-      "Szymon": { hash: "WmFybm93c2tp", redirect: "koledzy.html" }     // "Zarnowski"
+      "pablo":  { hash: "a3VuZGVs", redirect: "ja.html" },        
+      "Filip":  { hash: "Tm93YWtvd3NraQ==", redirect: "koledzy.html" }, 
+      "Miłosz": { hash: "SmFnaWVsbG8=", redirect: "koledzy.html" },   
+      "Milosz": { hash: "SmFnaWVsbG8=", redirect: "koledzy.html" },    
+      "Szymon": { hash: "WmFybm93c2tp", redirect: "koledzy.html" }    
     };
 
-    // Szyfrowanie: base64
+    
     const hash = btoa(pass);
 
     if (accounts[user] && accounts[user].hash === hash) {
@@ -281,3 +281,4 @@
   </script>
 </body>
 </html>
+
