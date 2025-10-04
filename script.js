@@ -164,6 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Funkcja do ładowania galerii zdjęć
+// Funkcja do ładowania galerii zdjęć
 function loadGallery(galleryElement) {
     const loggedInUser = sessionStorage.getItem('loggedInUser');
     let imageCount, folder, extension;
@@ -188,6 +189,59 @@ function loadGallery(galleryElement) {
     // Wyczyść galerię przed załadowaniem nowych zdjęć
     galleryElement.innerHTML = '';
     
+    // Dodaj styl do galerii jeśli nie ma
+    if (!document.querySelector('.gallery-styles')) {
+        const style = document.createElement('style');
+        style.className = 'gallery-styles';
+        style.textContent = `
+            .gallery {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+                margin-top: 20px;
+                max-height: 70vh;
+                overflow-y: auto;
+                padding: 10px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 10px;
+            }
+            
+            .gallery-item {
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                transition: transform 0.3s;
+                aspect-ratio: 1;
+            }
+            
+            .gallery-item:hover {
+                transform: scale(1.05);
+            }
+            
+            .gallery-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+            /* Responsywność galerii */
+            @media (max-width: 900px) {
+                .gallery {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+            @media (max-width: 600px) {
+                .gallery {
+                    grid-template-columns: 1fr;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
     // Dodaj zdjęcia do galerii
     for (let i = 1; i <= imageCount; i++) {
         const galleryItem = document.createElement('div');
@@ -203,45 +257,11 @@ function loadGallery(galleryElement) {
         img.onerror = function() {
             // Jeśli zdjęcie nie istnieje, użyj placeholder z odpowiednim kolorem
             const color = currentPage === 'dashboard.html' ? '8e2de2' : '4a00e0';
-            this.src = `https://via.placeholder.com/200x150/${color}/ffffff?text=Image+${i}`;
+            this.src = `https://via.placeholder.com/200x200/${color}/ffffff?text=Image+${i}`;
             this.alt = `Placeholder dla zdjęcia ${i}`;
         };
         
         galleryItem.appendChild(img);
         galleryElement.appendChild(galleryItem);
-    }
-    
-    // Dodaj styl do galerii jeśli nie ma
-    if (!document.querySelector('.gallery-styles')) {
-        const style = document.createElement('style');
-        style.className = 'gallery-styles';
-        style.textContent = `
-            .gallery {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 15px;
-                margin-top: 20px;
-            }
-            
-            .gallery-item {
-                background: rgba(255, 255, 255, 0.1);
-                border-radius: 10px;
-                overflow: hidden;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-                transition: transform 0.3s;
-            }
-            
-            .gallery-item:hover {
-                transform: scale(1.05);
-            }
-            
-            .gallery-item img {
-                width: 100%;
-                height: 150px;
-                object-fit: cover;
-                display: block;
-            }
-        `;
-        document.head.appendChild(style);
     }
 }
