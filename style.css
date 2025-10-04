@@ -145,8 +145,12 @@ nav a:hover {
 /* Galeria */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* Zawsze 3 kolumny */
     gap: 15px;
+    margin-top: 20px;
+    max-height: 80vh; /* Ogranicza wysokość galerii */
+    overflow-y: auto; /* Pozwala na przewijanie w pionie */
+    padding: 10px;
 }
 
 .gallery-item {
@@ -155,6 +159,7 @@ nav a:hover {
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s;
+    aspect-ratio: 1; /* Zachowuje kwadratowy kształt */
 }
 
 .gallery-item:hover {
@@ -163,7 +168,7 @@ nav a:hover {
 
 .gallery-item img {
     width: 100%;
-    height: 150px;
+    height: 100%;
     object-fit: cover;
     display: block;
 }
@@ -262,3 +267,4 @@ nav a:hover {
         height: 100px;
     }
 }
+
