@@ -174,7 +174,7 @@ function loadGallery(galleryElement) {
         extension = '.JPG';
     } else if (currentPage === 'gallery.html') {
      
-        imageCount = 109;
+        imageCount = 110;
         folder = 'fotki/';
         extension = '.png';
     } else {
@@ -260,4 +260,5 @@ function loadGallery(galleryElement) {
         galleryElement.appendChild(galleryItem);
     }
 }
+
 
