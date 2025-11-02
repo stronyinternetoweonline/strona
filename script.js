@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.location.href = users[username].redirectTo;
             } else {
              
-                errorMessage.textContent = 'Nieprawidłowa nazwa użytkownika lub hasło';
+                errorMessage.textContent = 'Szymon przypomnij se hasło. Nieprawidłowa nazwa użytkownika lub hasło';
                 errorMessage.className = 'error-message';
             }
         });
