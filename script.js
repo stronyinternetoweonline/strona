@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const loggedInUser = sessionStorage.getItem('loggedInUser');
             
             if (!loggedInUser) {
-                messageElement.textContent = 'Nie jesteś zalogowany';
+                messageElement.textContent = 'Nie jesteś zalogowany debilu';
                 messageElement.className = 'error-message';
                 return;
             }
